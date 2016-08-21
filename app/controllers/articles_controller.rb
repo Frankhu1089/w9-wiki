@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.save(article_params)
+    if @article.update(article_params)
       redirect_to @article
     else
       render "edit"
@@ -35,7 +35,9 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    #code
+    @article.destroy
+
+    redirect_to root_path,notice: "Successfully delete article"
   end
 
   private
